@@ -45,7 +45,6 @@ module.exports.render = (event, context, callback) => {
               if (err) {
                 console.log(error);
               } else {
-                console.log("html: " + html);
                 // Return the HTML wrapped in JSON to preserve encoding
                 callback(null, {data: html});
               }
