@@ -42,6 +42,10 @@ functions:
           path: todos/render
           method: get
           integration: lambda
+          request:
+            parameters:
+              querystrings:
+                url: true
           response:
             headers:
               Content-Type: "'text/html'"

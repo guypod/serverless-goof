@@ -2,9 +2,8 @@
 
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 const fs = require('fs');
-//const ejs = require('ejs');
-const dust = require('dustjs-linkedin');
-
+const qs = require('qs');
+const dust = require('dustjs-helpers');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 const params = {
@@ -31,11 +30,15 @@ module.exports.render = (event, context, callback) => {
         // Prepare the dust template (really should be stored ahead of time...)
         var compiled = dust.compile(data.toString(), "dustTemplate");
         dust.loadSource(compiled);
-        //var html = ejs.render(data.toString(),{
+
+        // Parse the query string
+        var params = qs.parse(event.query);
+        // Invoke the template
         dust.render("dustTemplate",
           {
             title: 'Goof TODO',
             subhead: 'Vulnerabilities at their best',
+            device: params.device,
             todos: result.Items
           },
           function(error, html) {

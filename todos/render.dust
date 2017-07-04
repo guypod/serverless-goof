@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{title}</title>
-  </head>
-  <body>
-    <div id="layout">
-      <style>
-      strong {font-weight: bold}
-      </style>
-      <h1 id="page-title">{title}</h1>
+  <h1 id="page-title">{title}</h1>
 
-      <div id="list">
-        <form action="/create" method="post" accept-charset="utf-8">
-          <div class="item-new">
-            <input class="input" type="text" name="content" />
-          </div>
-        </form>
+  <div>Device: {device} </div>
 
-        {#todos}
-          <div class="item">
-            <a class="update-link" href="/edit/{id}" title="Update this todo item">{text}</a>
-          </div>
-        {/todos}
+  {@if cond="'{device}'=='Desktop'"}
+    <div> Desktop version </div>
+  {:else}
+    <div> Mobile version </div>
+  {/if}
 
-      </div>
+  {#todos}
+    <div class="item">
+      <a class="update-link" href="./{id}" title="Get this todo item">{text}</a>
     </div>
+  {/todos}
+
   </body>
 </html>
