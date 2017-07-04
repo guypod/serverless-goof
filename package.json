@@ -1,0 +1,14 @@
+{
+  "name": "aws-rest-with-dynamodb",
+  "version": "1.0.0",
+  "description": "Serverless CRUD service exposing a REST HTTP interface",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^2.0.3",
+    "humanize-ms": "1.0.1",
+    "ms": "^0.7.1",
+    "dustjs-linkedin": "2.5.0",
+    "ejs-locals": "1.0.2"
+  }
+}

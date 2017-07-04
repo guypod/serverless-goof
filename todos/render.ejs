@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div id="layout">
+      <style>
+      strong {font-weight: bold}
+      </style>
+      <h1 id="page-title"><%= title %></h1>
+
+      <div id="list">
+        <form action="/create" method="post" accept-charset="utf-8">
+          <div class="item-new">
+            <input class="input" type="text" name="content" />
+          </div>
+        </form>
+
+      <% todos.forEach( function ( todo ){ %>
+        <div class="item">
+          <a class="update-link" href="/edit/<%= todo.id %>" title="Update this todo item"><%- new String(todo.text) %></a>
+        </div>
+      <% }); %>
+      </div>
+    </div>
+  </body>
+</html>
