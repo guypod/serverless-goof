@@ -20,6 +20,9 @@ module.exports.render = (event, context, callback) => {
       return;
     }
 
+    // For no good reason, write results to a temp files
+    fs.writeFile("/tmp/goof-todos-render." + Math.random(),JSON.stringify(result.Items));
+
     var templateFile = './todos/render.dust';
     fs.readFile(templateFile, function(err, data) {
       if (err) {

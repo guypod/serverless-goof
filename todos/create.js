@@ -4,6 +4,7 @@ const uuid = require('uuid');
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 const hms = require('humanize-ms');
 const ms = require('ms');
+const fs = require('fs');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
@@ -17,6 +18,9 @@ module.exports.create = (event, context, callback) => {
   }
 
   var todoTxt = parse(data.text);
+
+  // For no good reason, write results to a temp files
+  fs.writeFile("/tmp/goof-todos-create." + Math.random(),todoTxt);
 
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
