@@ -2,19 +2,17 @@
 <html>
   <h1 id="page-title">{title}</h1>
 
-  <div>Device: {device} </div>
+  {#todos}
+    <div class="item">
+      <a class="update-link" href="./{id}" title="Get this todo item">{text}</a>
+    </div>
+  {/todos}
 
   {@if cond="'{device}'=='Desktop'"}
     <div> Desktop version </div>
   {:else}
     <div> Mobile version </div>
   {/if}
-
-  {#todos}
-    <div class="item">
-      <a class="update-link" href="./{id}" title="Get this todo item">{text}</a>
-    </div>
-  {/todos}
 
   </body>
 </html>

@@ -33,6 +33,7 @@ module.exports.render = (event, context, callback) => {
 
         // Parse the query string
         var params = qs.parse(event.query);
+        console.log("Parsed parameters: " + JSON.stringify(params));
         // Invoke the template
         dust.render("dustTemplate",
           {
@@ -43,7 +44,7 @@ module.exports.render = (event, context, callback) => {
           },
           function(error, html) {
               if (err) {
-                console.log(error);
+                console.error(error);
               } else {
                 // Return the HTML wrapped in JSON to preserve encoding
                 callback(null, {data: html});
