@@ -17,6 +17,11 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
 
 functions:
   create:
@@ -74,6 +79,19 @@ functions:
           path: todos/{id}
           method: delete
           cors: true
+
+  internalBackup:
+    handler: admin/backup.backup
+
+  internalRestore:
+    handler: admin/restore.restore
+
+  adminApi:
+    handler: admin/api.api
+    events:
+      - http:
+          path: admin/{action}
+          method: get
 
 resources:
   Resources:
