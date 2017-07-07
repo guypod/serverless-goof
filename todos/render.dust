@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+
+{@if cond="'{device}'=='Desktop'"}
+  <body style="font-size: medium">
+{:else}
+  <body style="font-size: x-large">
+{/if}
+
   <h1 id="page-title">{title}</h1>
 
   {#todos}
@@ -8,11 +15,7 @@
     </div>
   {/todos}
 
-  {@if cond="'{device}'=='Desktop'"}
-    <div> Desktop version </div>
-  {:else}
-    <div> Mobile version </div>
-  {/if}
+  <div>Device string (debug): {device}</div>
 
   </body>
 </html>
