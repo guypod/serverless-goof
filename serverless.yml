@@ -40,22 +40,6 @@ functions:
           method: get
           cors: true
 
-  render:
-    handler: todos/render.render
-    events:
-      - http:
-          path: todos/render
-          method: get
-          integration: lambda
-          request:
-            parameters:
-              querystrings:
-                url: true
-          response:
-            headers:
-              Content-Type: "'text/html'"
-            template: $input.path('$.data')
-
   get:
     handler: todos/get.get
     events:
@@ -79,6 +63,22 @@ functions:
           path: todos/{id}
           method: delete
           cors: true
+          
+  render:
+    handler: todos/render.render
+    events:
+      - http:
+          path: todos/render
+          method: get
+          integration: lambda
+          request:
+            parameters:
+              querystrings:
+                url: true
+          response:
+            headers:
+              Content-Type: "'text/html'"
+            template: $input.path('$.data')
 
   internalBackup:
     handler: admin/backup.backup
