@@ -11,6 +11,7 @@ const params = {
 };
 
 module.exports.render = (event, context, callback) => {
+
   // fetch all todos from the database
   dynamoDb.scan(params, (error, result) => {
     // handle potential errors
