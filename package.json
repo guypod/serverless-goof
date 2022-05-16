@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "uuid": "^2.0.3",
-    "humanize-ms": "1.0.1",
+    "humanize-ms": "1.2.1",
     "ms": "^0.7.1",
     "dustjs-linkedin": "2.5.0",
     "dustjs-helpers": "1.5.0",
