@@ -11,6 +11,6 @@
     "dustjs-linkedin": "2.5.0",
     "dustjs-helpers": "1.5.0",
     "ejs-locals": "1.0.2",
-    "qs": "6.3.1"
+    "qs": "6.3.3"
   }
 }
